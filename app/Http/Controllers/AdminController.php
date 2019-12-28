@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
 class AdminController extends Controller
 {
@@ -43,9 +44,23 @@ class AdminController extends Controller
         }
     }
 
+<<<<<<< HEAD
     public function index()
     {
         //
+=======
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('admin/login');
+    }
+
+    public function index()
+    {
+        $users = User::all();
+        return view('admin.user.index', compact('users'));
+>>>>>>> Login
     }
 
     public function create()
@@ -64,22 +79,49 @@ class AdminController extends Controller
 
     public function show($id)
     {
+<<<<<<< HEAD
         //
+=======
+        $user = User::find($id);
+
+        return view('admin.user.show', compact('user'));
+>>>>>>> Login
     }
 
     public function edit($id)
     {
+<<<<<<< HEAD
         //
     }
 
     public function update(Request $request, $id)
     {
         //
+=======
+        $user = User::find($id);
+
+        return view('admin.user.edit', compact('user'));
+    }
+
+    public function update(UpdateUserRequest $request, $id)
+    {
+        $user = user::find($id);
+        $user->name = $request->name;
+        $user->gender = $request->gender;
+        $user->save();
+
+        return redirect('admin/users');
+>>>>>>> Login
     }
 
     public function destroy($id)
     {
+<<<<<<< HEAD
         //
+=======
+        User::destroy($id);
+        return back();
+>>>>>>> Login
     }
 
     public function upload($file, $path)

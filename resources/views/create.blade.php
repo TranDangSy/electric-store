@@ -129,8 +129,7 @@
                         <a class="btn btn-outline-success" href="admin">Đăng nhập</a>
                     </div>
                     @endif
-                    <form action="{{route('create')}}" method="POST" enctype="multipart/form-data">
-                        {{-- <input type="hidden" name="_token" value="{{csrf_token()}}"/> --}}
+                    <form action="{{route('create')}}" method="POST" role="form" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name:</label>
