@@ -19,20 +19,23 @@ class CreateProductsTable extends Migration
             $table->integer('popular')->withDefault(1);
             $table->integer('hot');
             $table->integer('status');
+            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('brand_id');
+            $table->unsignedInteger('media_id');
             $table->timestamps();
 
-            $table->foreign('categoty_id')
+            $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');
-            $table->foreign('band_id')
-                ->references('brands')
-                ->on('rooms')
+            $table->foreign('brand_id')
+                ->references('id')
+                ->on('brands')
                 ->onDelete('cascade');
             $table->foreign('media_id')
                 ->references('id')
                 ->on('media')
-                ->onDelete('cascade'); 
+                ->onDelete('cascade');
         });
     }
 

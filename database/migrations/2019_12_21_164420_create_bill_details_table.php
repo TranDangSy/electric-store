@@ -12,6 +12,7 @@ class CreateBillDetailsTable extends Migration
             $table->increments('id');
             $table->integer('quantity');
             $table->integer('total_price');
+            $table->unsignedInteger('bill_id');
             $table->timestamps();
 
             $table->foreign('bill_id')

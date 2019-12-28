@@ -11,6 +11,8 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
             $table->datetime('date');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('product_id');
             $table->timestamps();
 
             $table->foreign('user_id')

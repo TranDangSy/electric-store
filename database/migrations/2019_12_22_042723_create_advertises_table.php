@@ -15,12 +15,13 @@ class CreateAdvertisesTable extends Migration
             $table->text('decription');
             $table->integer('price_sale');
             $table->integer('status');
+            $table->unsignedInteger('product_id');
+            $table->timestamps();
 
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
                 ->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
