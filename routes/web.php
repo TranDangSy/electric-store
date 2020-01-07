@@ -24,5 +24,5 @@ Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'], function(){
 
     Route::resources(['users' => 'AdminController']);
 
-    Route::resources(['brands' => 'BrandController']);
+    Route::resources(['category' => 'CategoryController']);
 });
