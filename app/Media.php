@@ -10,9 +10,4 @@ class Media extends Model
         'link',
         'status',
     ];
-
-    public function products()
-    {
-        return $this->hasMany(Products::class);
-    }
 }

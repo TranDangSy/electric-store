@@ -19,7 +19,5 @@ class UserTableSeeder extends Seeder
         $user->level = 1;
         $user->status = 1;
         $user->save();
-
-        // factory(User::class, 30)->create();
     }
 }

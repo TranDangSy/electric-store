@@ -35,6 +35,8 @@
             <h6 class="collapse-header">Danh mục quản lí:</h6>
             <a class="collapse-item" href="admin/users">Users</a>
             <a class="collapse-item" href="admin/brands">Brands</a>
+            <a class="collapse-item" href="admin/category">Category</a>
+            <a class="collapse-item" href="admin/products">Products</a>
           </div>
         </div>
       </li>

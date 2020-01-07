@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->integer('status');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('brand_id');
-            $table->unsignedInteger('media_id');
             $table->timestamps();
 
             $table->foreign('category_id')
@@ -31,10 +30,6 @@ class CreateProductsTable extends Migration
             $table->foreign('brand_id')
                 ->references('id')
                 ->on('brands')
-                ->onDelete('cascade');
-            $table->foreign('media_id')
-                ->references('id')
-                ->on('media')
                 ->onDelete('cascade');
         });
     }
