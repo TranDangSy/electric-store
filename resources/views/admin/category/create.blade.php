@@ -112,7 +112,7 @@
         <div class="splash-container">
             <div class="panel panel-default panel-border-color panel-border-color-primary">
                 <div class="panel-heading">
-                    <span class="splash-description">Chào mừng đến với trang quản trị</span>
+                    <span class="splash-description">Create Category</span>
                 </div>
                 <div class="panel-body">
                     @foreach ($errors->all() as $error)
