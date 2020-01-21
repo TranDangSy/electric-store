@@ -18,7 +18,6 @@ class Product extends Model
         'status',
         'category_id',
         'brand_id',
-        'media_id',
     ];
 
     public function category()
@@ -29,11 +28,6 @@ class Product extends Model
     public function brand()
     {
        return $this->belongsTo(Brand::class)->withDefault();
-    }
-
-    public function media()
-    {
-       return $this->belongsTo(Media::class)->withDefault();
     }
 
     public function comments()

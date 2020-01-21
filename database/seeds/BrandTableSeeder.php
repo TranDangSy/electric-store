@@ -15,6 +15,6 @@ class BrandTableSeeder extends Seeder
         $brand->status = 1;
         $brand->save();
 
-        factory(Brand::class, 10)->create();
+        factory(Brand::class, 20)->create();
     }
 }

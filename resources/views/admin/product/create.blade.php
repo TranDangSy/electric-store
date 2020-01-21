@@ -112,7 +112,7 @@
         <div class="splash-container">
             <div class="panel panel-default panel-border-color panel-border-color-primary">
                 <div class="panel-heading">
-                    <span class="splash-description">Create Category</span>
+                    <span class="splash-description">Tạo sản phẩm</span>
                 </div>
                 <div class="panel-body">
                     @foreach ($errors->all() as $error)
@@ -123,27 +123,61 @@
                         {{session('thongbao')}}
                     </div>
                     @endif
-                    <form action="{{route('category.store')}}" method="POST" role="form" enctype="multipart/form-data">
+                    <form action="{{route('products.store')}}" method="POST" role="form" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="text" placeholder="Nhập tên của category" class="form-control" name="name" required autofocus>
+                            <input type="text" placeholder="Nhập tên của sản phẩm" class="form-control" name="name" required autofocus>
                         </div>
                         <div class="form-group">
-                            <label for="content">Detail:</label>
-                            <textarea rows="4" cols="50" name="detail" class="form-control" placeholder="Nhập thông tin của category"></textarea>
-                        </div>    
+                            <label for="decription">Decription:</label>
+                            <input type="text" placeholder="Nhập mô tả của sản phẩm" class="form-control" name="decription">
+                        </div>
                         <div class="form-group">
                             <label for="image">Image</label>
                             <input type="file" class="form-control" name="file">
                         </div>
                         <div class="form-group">
-                            <label for="address">Keyword:</label>
-                            <input type="text" class="form-control" placeholder="Nhập địa chỉ của brand" class="form-control" name="keyword">
+                            <label for="quantity">Quantity:</label>
+                            <input type="text" class="form-control" placeholder="Nhập số lượng của sản phẩm" class="form-control" name="quantity">
                         </div>
                         <div class="form-group">
-                            <label for="status">Category status:</label>
+                            <label for="price">Price:</label>
+                            <input type="text" placeholder="Nhập giá của sản phẩm" class="form-control" name="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="discount">Discount:</label>
+                            <input type="text" placeholder="Nhập discount" class="form-control" name="discount">
+                        </div>
+                        <div class="form-group">
+                            <label for="popular">Popular:</label>
+                            <input type="text" placeholder="Nhập độ phổ biến" class="form-control" name="popular">
+                        </div>
+                        <div class="form-group">
+                            <label for="hot">Hot:</label>
+                            <input type="text" placeholder="Nhập hot" class="form-control" name="hot">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status:</label>
                             <input type="text" placeholder="Nhập status" class="form-control" name="status">
+                        </div>
+                        <div class="form-group">
+                        <h3 for="category_id">Category:</h3>
+                        <select class="form-control" name="category_id">
+                            <option value="">---</option>
+                            @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                        <div class="form-group">
+                        <h3 for="brand_id">Brand:</h3>
+                        <select class="form-control" name="brand_id">
+                            <option value="">---</option>
+                            @foreach($brands as $brand)
+                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                            @endforeach
+                        </select>
                         </div>
                         <div class="form-group login-submit">
                             <button data-dismiss="modal" type="submit" class="btn btn-primary btn-xl">Create Category</button>

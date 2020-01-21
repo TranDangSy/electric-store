@@ -1,11 +1,19 @@
 <?php
+use App\Product;
+use App\Brand;
+use App\Category;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home',function () {
-    return view('home.index');
+Route::get('home',function () 
+{
+    $products = Product::paginate(6);
+    $brands = Brand::all();
+    $categories = Category::all();
+
+    return view('home.index',compact('products', 'brands', 'categories'));
 });
 
 Route::get('create','AdminController@create');
@@ -27,4 +35,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'], function(){
     Route::resources(['brands' => 'BrandController']);
 
     Route::resources(['category' => 'CategoryController']);
+
+    Route::resources(['products' => 'ProductController']);
 });
