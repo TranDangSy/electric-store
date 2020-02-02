@@ -12,7 +12,7 @@ Route::get('/', function () {
     return view('home.index', compact('products', 'brands', 'categories'));
 });
 
-Route::get('product/{slug}-{id}.html', function ($id) {
+Route::get('product/{id}/{slug}.html', function ($id) {
     $product = Product::find($id);
     $brands = Brand::all();
     $categories = Category::all();

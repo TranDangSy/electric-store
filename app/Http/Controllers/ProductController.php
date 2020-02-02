@@ -32,6 +32,7 @@ class ProductController extends Controller
     {
         $image = $this->upload($request->file('file'), 'admin_asset/img/product/');
         $request->merge(['image' => $image]);
+        $request['slug'] = Str::slug($request->name);
         $product = Product::create($request->all());
 
         return redirect('admin/products/create')->with('thongbao','Tạo sản phẩm thành công');

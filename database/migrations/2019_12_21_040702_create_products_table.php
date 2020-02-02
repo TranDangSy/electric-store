@@ -11,13 +11,13 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug');
             $table->text('decription');
             $table->string('image');
             $table->integer('quantity');
             $table->integer('price');
             $table->integer('discount');
-            $table->integer('popular')->withDefault(1);
-            $table->integer('hot');
+            $table->integer('hot')->withDefault(1);
             $table->integer('status');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('brand_id');

@@ -38,10 +38,6 @@
                             <td>{{ $product->discount }}</td>
                         </tr>
                         <tr>
-                            <td>Popular: </td>
-                            <td>{{ $product->popular }}</td>
-                        </tr>
-                        <tr>
                             <td>Hot: </td>
                             <td>{{ $product->hot }}</td>
                         </tr>
