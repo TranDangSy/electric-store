@@ -10,7 +10,7 @@
 					<div class="product-image-wrapper">
 						<div class="single-products">
 							<div class="productinfo text-center">
-								<a href="product/{{$product->id}}"><img src="{{asset($product->image)}}" alt="" /></a>
+								<a href="product/{{$product->id}}/{{$product->slug}}.html"><img src="{{asset($product->image)}}" alt="" /></a>
 								<h2>{{$product->price}}</h2>
 								<p>{{$product->name}}</p>
 								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

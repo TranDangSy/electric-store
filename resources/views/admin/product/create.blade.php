@@ -150,10 +150,6 @@
                             <input type="text" placeholder="Nhập discount" class="form-control" name="discount">
                         </div>
                         <div class="form-group">
-                            <label for="popular">Popular:</label>
-                            <input type="text" placeholder="Nhập độ phổ biến" class="form-control" name="popular">
-                        </div>
-                        <div class="form-group">
                             <label for="hot">Hot:</label>
                             <input type="text" placeholder="Nhập hot" class="form-control" name="hot">
                         </div>

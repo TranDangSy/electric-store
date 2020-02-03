@@ -31,10 +31,6 @@
                 <input type="text" name="discount" class="form-control" value="{{ $product->discount }}">
             </div>
             <div class="form-group">
-                <label for="popular">Popular</label>
-                <input type="text" name="popular" class="form-control" value="{{ $product->popular }}">
-            </div>
-            <div class="form-group">
                 <label for="hot">Hot</label>
                 <input type="text" name="hot" class="form-control" value="{{ $product->hot }}">
             </div>

@@ -18,7 +18,6 @@ class StoreProductRequest extends FormRequest
             'file' => 'required|image',
             'quantity' => 'required',
             'price' => 'required',
-            'popular' => 'required',
             'hot' => 'required',
             'category_id' => 'required',
             'brand_id' => 'required',
