@@ -14,6 +14,4 @@
     <link href="../admin_asset/css/animate.css" rel="stylesheet">
 	<link href="../admin_asset/css/main.css" rel="stylesheet">
     <link href="../admin_asset/css/responsive.css" rel="stylesheet">
-    
-    <meta property="og:url" content="{{ \Request::fullUrl() }}" />
 </head>

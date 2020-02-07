@@ -12,7 +12,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->name,
         'slug' => $faker->slug,
         'decription' => $faker->text,
-        'image' => '../admin_asset/img/home/shipping.jpg',
+        'image' => '../admin_asset/images/home/shipping.jpg',
         'quantity' => 10,
         'price' => 100000000,
         'discount' => 10,

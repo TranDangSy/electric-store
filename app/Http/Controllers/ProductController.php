@@ -88,4 +88,9 @@ class ProductController extends Controller
 
         return $path . $name;
     }
+
+    public  function getAddToCart(Request $request, $id)
+    {
+        $product = Product::find($id);
+    }
 }
