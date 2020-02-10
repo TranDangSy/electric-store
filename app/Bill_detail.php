@@ -7,13 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Bill_detail extends Model
 {
     protected $fillable = [
-        'quantity',
-        'total_price',
         'bill_id',
+        'product_id',
+        'quantity',
+        'price',
     ];
-
-    public function bill()
-    {
-        return $this->belongsTo(Bill::class)->withDefault();
-    }
 }

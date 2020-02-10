@@ -10,10 +10,11 @@
 					<div class="product-image-wrapper">
 						<div class="single-products">
 							<div class="productinfo text-center">
-								<a href="product/{{$product->id}}/{{$product->slug}}.html"><img src="{{asset($product->image)}}" alt="" /></a>
+								<a href="product/{{$product->id}}/{{$product->slug}}.html"><img
+										src="{{asset($product->image)}}" alt="" /></a>
 								<h2>{{$product->price}}</h2>
 								<p>{{$product->name}}</p>
-								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+								<a href="{{asset('cart/add/'.$product->id)}}">Đặt hàng</a>
 							</div>
 						</div>
 						<div class="choose">
@@ -43,10 +44,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery1.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery1.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -56,10 +58,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery2.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery2.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -69,10 +72,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery3.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery3.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -82,10 +86,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery4.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery4.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -98,10 +103,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery4.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery4.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -111,10 +117,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery3.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery3.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -124,10 +131,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery2.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery2.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -137,10 +145,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery1.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery1.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -153,10 +162,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery3.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery3.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -166,10 +176,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery4.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery4.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -179,10 +190,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery1.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery1.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -192,10 +204,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery2.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery2.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -208,10 +221,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery1.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery1.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -221,10 +235,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery2.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery2.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -234,10 +249,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery3.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery3.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -247,10 +263,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery4.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery4.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -263,10 +280,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery2.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery2.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -276,10 +294,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery4.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery4.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -289,10 +308,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery3.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery3.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -302,10 +322,11 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="../admin_asset/img/home/gallery1.jpg" alt="" />
+										<img src="../admin_asset/images/home/gallery1.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 
 								</div>
@@ -325,10 +346,11 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="../admin_asset/img/home/recommend1.jpg" alt="" />
+											<img src="../admin_asset/images/home/recommend1.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="#" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 
 									</div>
@@ -338,10 +360,11 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="../admin_asset/img/home/recommend2.jpg" alt="" />
+											<img src="../admin_asset/images/home/recommend2.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="#" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 
 									</div>
@@ -351,10 +374,11 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="../admin_asset/img/home/recommend3.jpg" alt="" />
+											<img src="../admin_asset/images/home/recommend3.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="#" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 
 									</div>
@@ -366,10 +390,11 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="../admin_asset/img/home/recommend1.jpg" alt="" />
+											<img src="../admin_asset/images/home/recommend1.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="#" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 
 									</div>
@@ -379,10 +404,11 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="../admin_asset/img/home/recommend2.jpg" alt="" />
+											<img src="../admin_asset/images/home/recommend2.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="#" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 
 									</div>
@@ -392,10 +418,11 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="../admin_asset/img/home/recommend3.jpg" alt="" />
+											<img src="../admin_asset/images/home/recommend3.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="#" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 
 									</div>

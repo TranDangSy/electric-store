@@ -6,18 +6,20 @@ use App\Category;
 
 Route::get('/', function () {
     $products = Product::paginate(6);
-    $brands = Brand::all();
-    $categories = Category::all();
 
-    return view('home.index', compact('products', 'brands', 'categories'));
+    return view('home.index', compact('products'));
 });
 
 Route::get('product/{id}/{slug}.html', function ($id) {
     $product = Product::find($id);
-    $brands = Brand::all();
-    $categories = Category::all();
 
-    return view('home.detai', compact('product', 'brands', 'categories'));
+    return view('home.detai', compact('product'));
+});
+Route::group(['prefix'=>'cart'], function(){
+    Route::get('/','CartController@getShowCart');
+	Route::get('add/{id}','CartController@getAddCart');
+    Route::get('delete/{id}','CartController@getDeleteCart');
+    Route::get('update','CartController@getUpdateCart');
 });
 
 Route::get('create', 'AdminController@create');
