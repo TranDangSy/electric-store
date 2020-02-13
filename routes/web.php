@@ -30,6 +30,9 @@ Route::post('admin/login', 'AdminController@postLogin')->name('admin/login');
 
 Route::post('admin/logout', 'AdminController@logout');
 
+Route::get('/checkout', 'CartController@getCheckOut');
+Route::post('/checkout', 'CartController@postCheckOut');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 
     Route::get('/', function () {
@@ -43,4 +46,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
     Route::resources(['category' => 'CategoryController']);
 
     Route::resources(['products' => 'ProductController']);
+
+    Route::resources(['customers' => 'CustomerController']);
+
+    Route::resources(['bills' => 'BillController']);
 });

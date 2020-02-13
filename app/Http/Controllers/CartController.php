@@ -3,16 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\Product;
+use App\Customer;
+use App\Bill;
+use App\Bill_detail;
 use Cart;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CartController extends Controller
 {
     public function getAddCart($id){
     	$product = Product::find($id);
-    	Cart::add(['id' => $id, 'name' => $product->name, 'qty' => 1, 'price' =>$product->price, 'options' => ['img' => $product->image]]);
-    	return redirect('cart/');
+        Cart::add(['id' => $id, 'name' => $product->name, 'qty' => 1, 'price' =>$product->price, 'options' => ['image' => $product->image]]);
+        Toastr::success('Đã thêm sản phẩm vào giỏ hàng', 'Success', ["positionClass" => "toast-top-right"]);
+
+    	return redirect()->back();
     }
 
     public function getShowCart(){
@@ -27,6 +34,7 @@ class CartController extends Controller
     	}else{
     		Cart::remove($id);
         }
+        Toastr::warning('Đã xóa sản phẩm vào giỏ hàng', 'Delete', ["positionClass" => "toast-top-right"]);
         
     	return back();
     }
@@ -34,4 +42,49 @@ class CartController extends Controller
     public function getUpdateCart(Request $request){
         Cart::update($request->rowId, $request->qty);
     }
+
+    public function getCheckOut(){
+        $this->data['cart'] = Cart::content();
+        $this->data['total'] = Cart::total();
+
+        return view('home.checkout', $this->data);
+    }
+
+    public function postCheckOut(Request $request) {
+        $cartInfor = Cart::content();
+        
+        try {
+            // save
+            $customer = new Customer;
+            $customer->name = $request->fullName;
+            $customer->email = $request->email;
+            $customer->address = $request->address;
+            $customer->phone_number = $request->phoneNumber;
+            $customer->note = $request->note;
+            $customer->save();
+
+            $bill = new Bill;
+            $bill->customer_id = $customer->id;
+            $bill->date_order = date('Y-m-d H:i:s');
+            $bill->total = str_replace(',', '', Cart::total());
+            $bill->note = $request->note;
+            $bill->save();
+
+            if (count($cartInfor) >0) {
+                foreach ($cartInfor as $key => $item) {
+                    $billDetail = new Bill_detail;
+                    $billDetail->bill_id = $bill->id;
+                    $billDetail->product_id = $item->id;
+                    $billDetail->quantity = $item->qty;
+                    $billDetail->price = $item->price;
+                    $billDetail->save();
+                }
+            }
+           Cart::destroy();
+           return redirect('/checkout')->with('notif','Thanh toán thành công');
+            
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }    
 }

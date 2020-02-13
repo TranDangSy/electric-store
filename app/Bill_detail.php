@@ -12,4 +12,17 @@ class Bill_detail extends Model
         'quantity',
         'price',
     ];
+
+    public function bill()
+    {
+        return $this->belongsTo(Bill::class)->withDefault();
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class)->withDefault();
+    }
+    
+
+   
 }

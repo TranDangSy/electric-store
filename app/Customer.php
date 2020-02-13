@@ -13,4 +13,9 @@ class Customer extends Model
         'phone_number',
         'note',
     ];
+    
+    public function bills()
+    {
+        return $this->hasMany(Bill::class);
+    }
 }

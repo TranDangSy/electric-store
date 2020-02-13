@@ -20,6 +20,11 @@ class Product extends Model
         'brand_id',
     ];
 
+    public function bill_details()
+    {
+        return $this->hasMany(Bill_detail::class);
+    }
+
     public function category()
     {
        return $this->belongsTo(Category::class)->withDefault();
@@ -33,11 +38,6 @@ class Product extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
-    }
-
-    public function bills()
-    {
-    	return $this->hasMany(Bill::class);
     }
 
     public function sales()
