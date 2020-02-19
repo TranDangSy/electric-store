@@ -16,16 +16,18 @@ class CartController extends Controller
 {
     public function getAddCart($id){
     	$product = Product::find($id);
-        Cart::add(['id' => $id, 'name' => $product->name, 'qty' => 1, 'price' =>$product->price, 'options' => ['image' => $product->image]]);
+        Cart::add(['id' => $id, 'name' => $product->name, 'qty' => 1, 
+        'price' => $product->price, 'options' => ['image' => $product->image, 'qty_pro' => $product->quantity]]);
+        
         Toastr::success('Đã thêm sản phẩm vào giỏ hàng', 'Success', ["positionClass" => "toast-top-right"]);
 
     	return redirect()->back();
     }
 
     public function getShowCart(){
-
-    	$data['carts'] = Cart::content();
-    	return view('home.cart',$data);
+        $data['carts'] = Cart::content();
+        
+    	return view('home.cart', $data);
     }
 
     public function getDeleteCart($id){
