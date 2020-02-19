@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-user-information">
-               
+
                     <tbody>
                         <tr>
                             <td>Thông tin người đặt hàng: </td>
@@ -34,36 +34,61 @@
                             <td>Ghi chú: </td>
                             <td>{{ $bill->customer->note }}</td>
                         </tr>
-                       
+
                     </tbody>
-           
-                </table>  
-                <table id="myTable" class="table table-bordered table-hover" role="grid" aria-describedby="example2_info">
-                            <thead>
-                            <tr role="row">
-                                <th>STT</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Số lượng</th>
-                                <th>Giá tiền</th>
-                            </thead>
-                            <tbody>
-                            @foreach($bill_details as $key => $item)
-                                <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>{{ $item->product->name }}</td>
-                                    <td>{{ $item->quantity  }}</td>
-                                    <td>{{ number_format($item->price*$item->quantity) }} VNĐ</td>
-                                </tr>
-                            @endforeach
-                            <tr>
-                                <td colspan="3"><b>Tổng tiền</b></td>
-                                <td colspan="1"><b style="color:red" class="text-red">{{ number_format($bill->total) }} VNĐ</b></td>
-                            </tr>
-                            </tbody>
-                        </table>
+
+                </table>
+                <table id="myTable" class="table table-bordered table-hover" role="grid"
+                    aria-describedby="example2_info">
+                    <thead>
+                        <tr role="row">
+                            <th>STT</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá tiền</th>
+                    </thead>
+                    <tbody>
+                        @foreach($bill_details as $key => $item)
+                        <tr>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $item->product->name }}</td>
+                            <td>{{ $item->quantity  }}</td>
+                            <td>{{ number_format($item->price*$item->quantity) }} VNĐ</td>
+                        </tr>
+                        @endforeach
+                        <tr>
+                            <td colspan="3"><b>Tổng tiền:</b></td>
+                            <td colspan="1"><b style="color:red" class="text-red">{{ number_format($bill->total) }}
+                                    VNĐ</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <form action="admin/bills/updatebill/{{$bill->id}}" method="POST">
+                @csrf
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <div class="form-inline">
+                        <label>Trạng thái giao hàng: </label>
+                        @if($bill->status == 0 || $bill->status == 1)
+                        <select class="form-control" name="status">
+                            <option value="0" {{ $bill->status == 0 ? 'selected = "selected"' : '' }}>Đang
+                                xử lí</option>
+                            <option value="1" {{ $bill->status == 1 ? 'selected = "selected"' : '' }}>Đang
+                                giao hàng</option>
+                            <option value="2" {{ $bill->status == 2 ? 'selected = "selected"' : '' }}>Hoàn
+                                thành</option>
+                        </select>
+                        <input type="submit" value="Cập nhập" class="btn btn-sm btn-danger">
+                        @else
+                        <label style="color:red">Hoàn thành</label>
+                        @endif
+                        </tr>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

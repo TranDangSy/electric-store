@@ -50,4 +50,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
     Route::resources(['customers' => 'CustomerController']);
 
     Route::resources(['bills' => 'BillController']);
+
+    Route::post('bills/updatebill/{id}', 'BillController@updatebill');
 });

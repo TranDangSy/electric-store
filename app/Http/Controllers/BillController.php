@@ -12,6 +12,7 @@ class BillController extends Controller
     public function index()
     {
         $bills = Bill::all();
+
         return view('admin.bill.index', compact('bills'));
     }
 
@@ -46,5 +47,21 @@ class BillController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updatebill(Request $res, $id)
+    {
+        $bill = Bill::find($id);
+        $bill_details = Bill_detail::where('bill_id',$id)->get();
+        
+        foreach($bill_details as $item)
+        {
+            $product = Product::where('id', '=' , $item->product_id)->first();
+            $product->quantity = $product->quantity - $item->quantity;
+            $bill->status = $res->status;
+            $product->save();
+            $bill->save();
+        }
+        return back();
     }
 }

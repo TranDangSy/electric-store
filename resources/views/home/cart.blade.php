@@ -35,7 +35,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input class="form-control" type="number" value="{{$cart->qty}}"
+                                <input class="form-control" type="number" min="1" max="{{ $cart->options->qty_pro }}" value="{{ $cart->qty }}"
                                     onchange="updateCart(this.value, '{{ $cart->rowId }}')">
                             </div>
                         </td>
