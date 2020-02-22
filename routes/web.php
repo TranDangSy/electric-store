@@ -33,6 +33,8 @@ Route::post('admin/logout', 'AdminController@logout');
 Route::get('/checkout', 'CartController@getCheckOut');
 Route::post('/checkout', 'CartController@postCheckOut');
 
+Route::get('/search/name', 'ProductController@searchByName');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 
     Route::get('/', function () {

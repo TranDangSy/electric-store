@@ -93,4 +93,11 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
     }
+
+    public function searchByName(Request $request)
+    {
+        $products = Product::where('name', 'like', '%' . $request->value . '%')->get();
+
+        return response()->json($products);
+    }
 }
