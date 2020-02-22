@@ -93,7 +93,9 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search" />
+                        <form class="typeahead" role="search">
+                            <input type="search" name="q" class="form-control search-input" placeholder="Type something..." autocomplete="off">
+                        </form>
                     </div>
                 </div>
             </div>

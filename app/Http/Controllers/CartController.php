@@ -11,6 +11,7 @@ use App\Bill;
 use App\Bill_detail;
 use Cart;
 use Brian2694\Toastr\Facades\Toastr;
+use Mail;
 
 class CartController extends Controller
 {
@@ -82,10 +83,21 @@ class CartController extends Controller
                     $billDetail->save();
                 }
             }
-           Cart::destroy();
-           return redirect('/checkout')->with('notif','Thanh toán thành công');
-            
-        } catch (Exception $e) {
+            $data['infor'] = $request->all();
+            $email = $request->email;
+            $data['carttotal'] = Cart::total();
+            $data['cartinfor'] = Cart::content();
+            Mail::send('home.email', $data, function($message) use($email)
+            {
+            $message->from('dangsy23498@gmail.com','binhansiCompanny');
+            $message->to($email, $email);
+            $message->cc('nvthuan45@gmail.com', 'Thuần Đz');
+            $message->subject('Xác nhận bill');
+            });
+            Cart::destroy();
+            return redirect('/checkout')->with('notif','Thanh toán thành công');
+        } 
+        catch (Exception $e) {
             echo $e->getMessage();
         }
     }    
