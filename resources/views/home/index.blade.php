@@ -14,12 +14,16 @@
 										src="{{asset($product->image)}}" alt="" /></a>
 								<h2>{{$product->price}}</h2>
 								<p>{{$product->name}}</p>
-								<a href="{{asset('cart/add/'.$product->id)}}">Đặt hàng</a>
+								@if($product->quantity > 0)
+								<p><a href="{{asset('cart/add/'.$product->id)}}">Đặt hàng</a></p>
+								@else
+								<p>Đã hết hàng</p>
+								@endif
 							</div>
 						</div>
 						<div class="choose">
 							<ul class="nav nav-pills nav-justified">
-								<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+								<li><a href="{{asset('wishlist/add/'.$product->id)}}"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
 								<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
 							</ul>
 						</div>

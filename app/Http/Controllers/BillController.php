@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Bill;
 use App\Bill_detail;
+use App\Exports\BillsExport;
 use Illuminate\Http\Request;
 use App\Product;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BillController extends Controller
 {
@@ -40,16 +42,6 @@ class BillController extends Controller
         return view('admin.bill.show', compact('bill_details', 'bill'));
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
     public function destroy($id)
     {
         //
@@ -63,9 +55,21 @@ class BillController extends Controller
         foreach($bill_details as $item)
         {
             $product = Product::where('id', '=' , $item->product_id)->first();
-            $product->quantity = $product->quantity - $item->quantity;
             $bill->status = $res->status;
-            $product->save();
+            
+            switch($res->status){
+                case 0:
+                    $res->status = 0;
+                break;
+                case 1:
+                    $res->status = 1;
+                break;
+                case 2:
+                    $res->status = 2;
+                    $product->quantity = $product->quantity - $item->quantity;
+                    $product->save();
+                break;
+            }
             $bill->save();
         }
         return back();
