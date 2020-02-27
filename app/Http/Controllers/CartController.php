@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Validator;
-use Illuminate\Support\Facades\Redirect;
 use App\Product;
 use App\Customer;
 use App\Bill;

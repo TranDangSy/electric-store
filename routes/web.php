@@ -1,8 +1,6 @@
 <?php
 
 use App\Product;
-use App\Brand;
-use App\Category;
 
 Route::get('/', function () {
     $products = Product::paginate(6);
@@ -22,8 +20,8 @@ Route::group(['prefix'=>'cart'], function(){
     Route::get('update','CartController@getUpdateCart');
 });
 
-Route::get('create', 'AdminController@create');
-Route::post('create', 'AdminController@store')->name('create');
+Route::get('register', 'AdminController@register');
+Route::post('register', 'AdminController@store_register')->name('register');
 
 Route::get('admin/login', 'AdminController@getLogin');
 Route::post('admin/login', 'AdminController@postLogin')->name('admin/login');

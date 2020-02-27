@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Http\File;
 class CategoryController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('checklevel')->only(['destroy']);
+        $this->middleware('checklevel2')->only(['update', 'destroy']);
+    }
+
     public function index()
     {
         $categories = Category::all();

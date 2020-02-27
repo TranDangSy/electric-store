@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $data['categories'] = Category::all();
-        $data['brands'] = Category::all();
+        $data['brands'] = Brand::all();
         view()->share($data);
 
         Schema::defaultStringLength(191);
