@@ -12,6 +12,12 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('checklevel')->only(['destroy']);
+        $this->middleware('checklevel2')->only(['update', 'destroy']);
+    }
+    
     public function index()
     {
         $products = Product::all();

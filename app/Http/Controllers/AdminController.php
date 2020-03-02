@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreUserRequest;
@@ -13,6 +11,11 @@ use App\Http\Requests\UpdateUserRequest;
 
 class AdminController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('checklevel')->except(['getLogin', 'postLogin', 'logout']);
+    }
 
     public function getLogin()
     {
@@ -34,7 +37,7 @@ class AdminController extends Controller
                 'password.max' => 'Password không được nhiều hơn 32 kí tự'
             ]);
 
-        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password], $request->has('remember')))
         {
             return redirect('admin');
         }
@@ -53,13 +56,28 @@ class AdminController extends Controller
 
     public function index()
     {
-        $users = User::all();
-        return view('admin.user.index', compact('users'));
+        
+            $users = User::all();
+            return view('admin.user.index', compact('users'));
+    }
+
+    public function register()
+    {
+        return view('create');
     }
 
     public function create()
     {
-        return view('create');
+        return view('admin/user/create');
+    }
+
+    public function store_register(StoreUserRequest $request)
+    {
+        $avatar = $this->upload($request->file('file'), 'admin_asset/img/user/');
+        $request->merge(['avatar' => $avatar]);
+        $users = User::create($request->all());
+
+        return redirect('register')->with('thongbao','Tạo tài khoản thành công hãy đăng nhập');
     }
 
     public function store(StoreUserRequest $request)
@@ -68,7 +86,7 @@ class AdminController extends Controller
         $request->merge(['avatar' => $avatar]);
         $users = User::create($request->all());
 
-        return redirect('create')->with('thongbao','Tạo tài khoản thành công hãy đăng nhập');
+        return redirect('admin/users')->with('thongbao','Tạo tài khoản thành công');
     }
 
     public function show($id)

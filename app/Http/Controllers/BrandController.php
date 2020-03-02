@@ -10,6 +10,12 @@ use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('checklevel')->only(['destroy']);
+        $this->middleware('checklevel2')->only(['update', 'destroy']);
+    }
+    
     public function index()
     {
         $brands = Brand::all();

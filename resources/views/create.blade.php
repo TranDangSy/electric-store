@@ -125,11 +125,8 @@
                             <a class="btn btn-success text-center" style="margin-left: 150px;" href="admin">Đăng nhập</a>
                         </div>
                     </div>
-                    <div>
-                        <a class="btn btn-outline-success" href="admin">Đăng nhập</a>
-                    </div>
                     @endif
-                    <form action="{{route('create')}}" method="POST" role="form" enctype="multipart/form-data">
+                    <form action="{{route('register')}}" method="POST" role="form" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name:</label>

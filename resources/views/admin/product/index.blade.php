@@ -31,12 +31,16 @@
                 {{$product->price}}</span></td>
                 <td style="width: 25%;">
                 <a class="btn btn-sm btn-primary" href="{{ route('products.show', $product->id) }}" title="">Xem</a>
+                @if(Auth::user()->level==1 || Auth::user()->level==2)
                 <a class="btn btn-sm btn-primary" href="{{ route('products.edit', $product->id) }}" title="">Sửa</a>
+                @endif
+                @if(Auth::user()->level==1)
                 <form action="{{ route('products.destroy', $product->id) }}" class="form-delete" role="form" method="post" style="display: inline">
                     @csrf
                     @method('delete')
                       <input type="submit" value="Xóa" class="btn btn-sm btn-danger">
                 </form>
+                @endif
                 </td>
             </tr>
         @endforeach    

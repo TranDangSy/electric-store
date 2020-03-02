@@ -32,12 +32,16 @@
                 {{$customer->phone_number}}</span></td>
                 <td style="width: 25%;">
                 <a class="btn btn-sm btn-primary" href="{{ route('customers.show', $customer->id) }}" title="">Xem</a>
+                @if(Auth::user()->level==1 || Auth::user()->level==2)
                 <a class="btn btn-sm btn-primary" href="{{ route('customers.edit', $customer->id) }}" title="">Sửa</a>
+                @endif
+                @if(Auth::user()->level==1)
                 <form action="{{ route('customers.destroy', $customer->id) }}" class="form-delete" role="form" method="post" style="display: inline">
                     @csrf
                     @method('delete')
                       <input type="submit" value="Xóa" class="btn btn-sm btn-danger">
                 </form>
+                @endif
                 </td>
             </tr>
         @endforeach    
