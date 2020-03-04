@@ -3,10 +3,10 @@
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Bill</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Đơn hàng</h6>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive" id="list-order">
                 <table class="table table-striped table-bordered" id="example" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -44,6 +44,9 @@
                         </tr>
                         @endforeach
                     </tbody>
+                    <div class="export">
+                        <a href="#" class="btn btn-info export" id="printButton"> Xuất file PDF </a>
+                    </div>
                 </table>
             </div>
         </div>

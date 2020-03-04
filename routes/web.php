@@ -13,6 +13,7 @@ Route::get('product/{id}/{slug}.html', function ($id) {
 
     return view('home.detai', compact('product'));
 });
+
 Route::group(['prefix'=>'cart'], function(){
     Route::get('/','CartController@getShowCart');
 	Route::get('add/{id}','CartController@getAddCart');
@@ -22,6 +23,12 @@ Route::group(['prefix'=>'cart'], function(){
 
 Route::get('register', 'AdminController@register');
 Route::post('register', 'AdminController@store_register')->name('register');
+
+Route::group(['prefix'=>'wishlist'], function(){
+    Route::get('/','CartController@getshowWishList')->name('wishlist');
+	Route::get('add/{id}','CartController@getAddWishlist');
+    Route::get('delete/{id}','CartController@getDeleteWishlist');
+});
 
 Route::get('admin/login', 'AdminController@getLogin');
 Route::post('admin/login', 'AdminController@postLogin')->name('admin/login');

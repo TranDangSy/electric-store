@@ -23,10 +23,30 @@ class CartController extends Controller
     	return redirect()->back();
     }
 
+    public function getAddWishlist(Request $request, $id){
+        $product = Product::find($id);
+        $duplicates = Cart::instance('wishlist')->search(function ($cartItem, $rowId)use ($request)  {
+            return $cartItem->id === $request->id;
+        });
+        if (!$duplicates->isEmpty()) {
+            return redirect()->back()->with('danger','Sản phẩm đã có trong danh sách của bạn');
+        }
+        Cart::instance('wishlist')->add(['id' => $id, 'qty' => 1, 'name' => $product->name,
+            'price' => $product->price, 'options' => ['image' => $product->image ]]);
+        Toastr::success('Đã thêm sản phẩm vào danh sách wishlist', 'Success', ["positionClass" => "toast-top-right"]);
+        return redirect()->back();
+    }
+
     public function getShowCart(){
         $data['carts'] = Cart::content();
         
     	return view('home.cart', $data);
+    }
+
+    public function getshowWishList(){
+        $wishlist = Cart::instance('wishlist')->content();
+
+        return view('home.wishlist', compact('wishlist'));
     }
 
     public function getDeleteCart($id){
@@ -38,6 +58,17 @@ class CartController extends Controller
         Toastr::warning('Đã xóa sản phẩm vào giỏ hàng', 'Delete', ["positionClass" => "toast-top-right"]);
         
     	return back();
+    }
+
+    public function getDeleteWishlist($id){
+        if ($id === null) {
+            return redirect()->route('wishlist');
+        }
+
+        if (array_key_exists($id, Cart::instance('wishlist')->content()->toArray())) {
+            Cart::instance('wishlist')->remove($id);
+        }
+        return redirect()->route('wishlist');
     }
 
     public function getUpdateCart(Request $request){
