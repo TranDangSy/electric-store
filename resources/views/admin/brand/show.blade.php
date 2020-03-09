@@ -2,8 +2,10 @@
 @section('content')
 <div class="container-fluid">
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Thông tin chi tiết Brand</h6>
+        <div class="card-header py-3 row">
+            <h6 class="m-0 font-weight-bold text-primary"><a href="admin">Trang chính</a></h6>/
+            <h6 class="m-0 font-weight-bold text-primary"><a href="admin/brands">Thương hiệu</a></h6>/
+            <h6 class="m-0 font-weight-bold text-primary">Thương hiệu {{ $brand->name }}</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">

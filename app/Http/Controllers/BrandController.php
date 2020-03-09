@@ -18,7 +18,7 @@ class BrandController extends Controller
     
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::where('status', '=', '1')->get();
 
         return view('admin.brand.index', compact('brands'));
     }
@@ -32,6 +32,7 @@ class BrandController extends Controller
     {
         $image = $this->upload($request->file('file'), 'admin_asset/img/brand/');
         $request->merge(['image' => $image]);
+        $request['slug'] = Str::slug($request->name);
         $brand = Brand::create($request->all());
 
         return redirect('admin/brands/create')->with('thongbao','Tạo brand thành công');
@@ -65,6 +66,7 @@ class BrandController extends Controller
     public function destroy($id)
     {
         Brand::destroy($id);
+        
         return back();
     }
 

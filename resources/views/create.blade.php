@@ -2,8 +2,9 @@
 <html>
 <head>
     <title>Create account</title>
-    <link href="admin_asset/css/bootstrap.min.css" rel="stylesheet">
-    <link href="admin_asset/css/font-awesome.min.css" rel="stylesheet">
+    <base href="{{asset('admin_asset')}}">
+    <link href="../admin_asset/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../admin_asset/css/bootstrap-4.css" rel="stylesheet" type="text/css">
     <style type="text/css">
     body{
         font-family: 'Roboto', Arial, sans-serif;

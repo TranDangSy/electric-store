@@ -24,14 +24,17 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'name' => 'min:5',
+            'detail' => 'min:5',
+            'keyword' => 'min:3',
         ];
     }
     public function messages()
     {
         return [
             'name.min' => 'Tên category phải nhiều hơn 5 kí tự',
+            'detail.min' => 'Mô tả category phải nhiều hơn 5 kí tự',
+            'keyword.min' => 'Keyword category phải nhiều hơn 2 kí tự',
         ];
     }
 }

@@ -10,13 +10,24 @@ use App\Bill_detail;
 use Cart;
 use Brian2694\Toastr\Facades\Toastr;
 use Mail;
+use DB;
 
 class CartController extends Controller
 {
     public function getAddCart($id){
-    	$product = Product::find($id);
+        $product = Product::find($id);
+        $price = $product ->price;
+        if($product->discount)
+        {
+            $price =  $price * (100 - $product->discount)/100;
+        }
+        if($product->quantity <= 0)
+        {
+            Toastr::warning('Sản phẩm đã hết hàng', 'XIN LỖI Không thành công', ["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+        }
         Cart::add(['id' => $id, 'name' => $product->name, 'qty' => 1, 
-        'price' => $product->price, 'options' => ['image' => $product->image, 'qty_pro' => $product->quantity]]);
+        'price' => $price, 'options' => ['image' => $product->image, 'qty_pro' => $product->quantity]]);
         
         Toastr::success('Đã thêm sản phẩm vào giỏ hàng', 'Success', ["positionClass" => "toast-top-right"]);
 
@@ -55,7 +66,7 @@ class CartController extends Controller
     	}else{
     		Cart::remove($id);
         }
-        Toastr::warning('Đã xóa sản phẩm vào giỏ hàng', 'Delete', ["positionClass" => "toast-top-right"]);
+        Toastr::warning('Đã xóa sản phẩm trong giỏ hàng', 'Delete', ["positionClass" => "toast-top-right"]);
         
     	return back();
     }
@@ -84,7 +95,7 @@ class CartController extends Controller
 
     public function postCheckOut(Request $request) {
         $cartInfor = Cart::content();
-        
+        DB::beginTransaction();
         try {
             // save
             $customer = new Customer;
@@ -101,15 +112,20 @@ class CartController extends Controller
             $bill->total = str_replace(',', '', Cart::total());
             $bill->note = $request->note;
             $bill->save();
-
             if (count($cartInfor) >0) {
                 foreach ($cartInfor as $key => $item) {
                     $billDetail = new Bill_detail;
-                    $billDetail->bill_id = $bill->id;
-                    $billDetail->product_id = $item->id;
-                    $billDetail->quantity = $item->qty;
-                    $billDetail->price = $item->price;
-                    $billDetail->save();
+                    $pro = Product::where('id', $item->id)->first()->quantity;
+                    if($item->qty < $pro)
+                    {
+                        $billDetail->bill_id = $bill->id;
+                        $billDetail->product_id = $item->id;
+                        $billDetail->quantity = $item->qty;
+                        $billDetail->price = $item->price;
+                        $billDetail->save(); 
+                    }
+                    else
+                    return redirect('/cart')->with('error','Đặt hàng không thành công, MỜI XEM LẠI SỐ LƯỢNG');
                 }
             }
             $data['infor'] = $request->all();
@@ -120,14 +136,18 @@ class CartController extends Controller
             {
             $message->from('dangsy23498@gmail.com','binhansiCompanny');
             $message->to($email, $email);
-            $message->cc('nvthuan45@gmail.com', 'Thuần Đz');
-            $message->subject('Xác nhận bill');
+            $message->subject('Xác nhận đơn hàng');
             });
+
+            DB::commit();
+            
             Cart::destroy();
-            return redirect('/checkout')->with('notif','Thanh toán thành công');
+            return redirect('/checkout')->with('notif','Đặt hàng thành công');
         } 
         catch (Exception $e) {
-            echo $e->getMessage();
+            DB::rollBack();
+
+            throw new Exception($e->getMessage());
         }
     }    
 }

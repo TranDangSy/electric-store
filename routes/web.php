@@ -1,18 +1,14 @@
 <?php
 
-use App\Product;
+Route::get('/', 'FrontendController@index');
 
-Route::get('/', function () {
-    $products = Product::paginate(6);
+Route::get('product/{id}/{slug}.html', 'FrontendController@getProduct');
 
-    return view('home.index', compact('products'));
-});
+Route::get('category/{id}/{slug}.html','FrontendController@getCategory');
 
-Route::get('product/{id}/{slug}.html', function ($id) {
-    $product = Product::find($id);
+Route::get('brand/{id}/{slug}.html','FrontendController@getBrand');
 
-    return view('home.detai', compact('product'));
-});
+Route::get('/search/name', 'FrontendController@searchByName');
 
 Route::group(['prefix'=>'cart'], function(){
     Route::get('/','CartController@getShowCart');
@@ -38,13 +34,9 @@ Route::post('admin/logout', 'AdminController@logout');
 Route::get('/checkout', 'CartController@getCheckOut');
 Route::post('/checkout', 'CartController@postCheckOut');
 
-Route::get('/search/name', 'ProductController@searchByName');
-
 Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 
-    Route::get('/', function () {
-        return view('admin.home.index');
-    });
+    Route::get('/', 'FrontendController@getIndexAdmin');
 
     Route::resources(['users' => 'AdminController']);
 

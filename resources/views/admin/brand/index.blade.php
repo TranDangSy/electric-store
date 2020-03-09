@@ -3,7 +3,8 @@
 <div class="container-fluid">
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Brand</h6>
+    <h4 class="m-0 font-weight-bold text-primary">Thương hiệu</h4>
+    <a href="admin/brands/create" type="button" class="btn btn-sm btn-primary">Thêm thương hiệu mới</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -12,7 +13,6 @@
             <tr>
                 <th style="width: 5%; text-align: center;">Name</th>
                 <th style="width: 15%; text-align: center;">Content</th>
-                <th style="width: 15%; text-align: center;">Địa chỉ</th>
                 <th style="width: 25%; text-align: center;">Hành động</th>
             </tr>
         </thead>
@@ -25,9 +25,7 @@
                 style ="white-space: nowrap; width: 200px; border: 1px solid #000000;
                  overflow: hidden; text-overflow: clip;">
                 {{$brand->content}}</span></td>
-                <td style="width: 15%;" class="text-center"><span class="badge badge-success">
-                {{$brand->address}}</span></td>
-                <td style="width: 25%;">
+                <td style="width: 10%;">
                 <a class="btn btn-sm btn-primary" href="{{ route('brands.show', $brand->id) }}" title="">Xem</a>
                 @if(Auth::user()->level==1 || Auth::user()->level==2)
                   <a class="btn btn-sm btn-primary" href="{{ route('brands.edit', $brand->id) }}" title="">Sửa</a>

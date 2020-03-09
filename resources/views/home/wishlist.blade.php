@@ -13,9 +13,9 @@
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
-                        <td class="image">Item</td>
-                        <td class="description">Name</td>
-                        <td class="price">Price</td>
+                        <td class="image">Ảnh sản phẩm</td>
+                        <td class="description">Tên sản phẩm</td>
+                        <td class="price">Giá sản phẩm</td>
                         <td>Xóa</td>
                     </tr>
                 </thead>

@@ -7,7 +7,6 @@ use App\Bill_detail;
 use App\Exports\BillsExport;
 use Illuminate\Http\Request;
 use App\Product;
-use Maatwebsite\Excel\Facades\Excel;
 
 class BillController extends Controller
 {
@@ -67,6 +66,7 @@ class BillController extends Controller
                 case 2:
                     $res->status = 2;
                     $product->quantity = $product->quantity - $item->quantity;
+                    $product->pay ++;
                     $product->save();
                 break;
             }

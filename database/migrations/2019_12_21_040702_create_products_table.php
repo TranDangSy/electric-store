@@ -16,9 +16,10 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->integer('quantity');
             $table->integer('price');
+            $table->integer('pay')->default(1)->index();
             $table->integer('discount');
-            $table->integer('hot')->withDefault(1);
-            $table->integer('status');
+            $table->integer('hot')->default(1);
+            $table->integer('status')->default(1);
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('brand_id');
             $table->timestamps();
