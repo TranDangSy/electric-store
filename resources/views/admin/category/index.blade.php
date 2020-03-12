@@ -3,7 +3,8 @@
 <div class="container-fluid">
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
+    <h4 class="m-0 font-weight-bold text-primary">Loại sản phẩm</h4>
+    <a href="admin/category/create" type="button" class="btn btn-sm btn-primary">Thêm loại sản phẩm mới</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">

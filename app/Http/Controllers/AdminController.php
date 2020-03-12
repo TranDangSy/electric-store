@@ -14,7 +14,7 @@ class AdminController extends Controller
 
     function __construct()
     {
-        $this->middleware('checklevel')->except(['getLogin', 'postLogin', 'logout']);
+        $this->middleware('checklevel')->except(['register', 'store_register', 'getLogin', 'postLogin', 'logout']);
     }
 
     public function getLogin()
@@ -49,6 +49,7 @@ class AdminController extends Controller
 
     public function logout()
     {
+        Request::session()->flush();
         Auth::logout();
 
         return redirect('admin/login');
@@ -56,9 +57,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        
-            $users = User::all();
-            return view('admin.user.index', compact('users'));
+        $users = User::all();
+        return view('admin.user.index', compact('users'));
     }
 
     public function register()

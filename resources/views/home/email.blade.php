@@ -7,23 +7,23 @@
         </p>
         <p>
             <span class="info">Email: </span>
-            {{$infor['email']}}
+            {{ $infor['email'] }}
         </p>
         <p>
             <span class="info">Điện thoại: </span>
-        {{$infor['phoneNumber']}}
+            {{ $infor['phoneNumber'] }}
         </p>
         <p>
             <span class="info">Địa chỉ: </span>
-            {{$infor['address']}}
+            {{ $infor['address'] }}
         </p>
         <p>
-            <span class="info">Ghi chú </span>
-            {{$infor['note']}}
+            <span class="info">Ghi chú: </span>
+            {{ $infor['note'] }}
         </p>
-    </div>						
+    </div>
     <div id="hoa-don">
-        <h3>Hóa đơn mua hàng</h3>							
+        <h3>Hóa đơn mua hàng</h3>
         <table class="table-bordered table-responsive">
             <tr class="bold">
                 <td width="30%">Tên sản phẩm</td>
@@ -32,17 +32,17 @@
                 <td width="15%">Thành tiền</td>
             </tr>
             @<?php foreach ($cartinfor as $cart): ?>
-                <tr>
+            <tr>
                 <td>{{$cart->name}}</td>
-                <td class="price">{{number_format($cart->price,0,',','.')}}</td>
+                <td class="price">{{ number_format($cart->price) }} VNĐ</td>
                 <td>{{$cart->qty}}</td>
-                <td class="price">{{number_format($cart->price*$cart->qty,0,',','.')}}</td>
+                <td class="price">{{number_format($cart->price*$cart->qty,0,',','.')}} VNĐ</td>
             </tr>
             <?php endforeach ?>
-            
+
             <tr>
                 <td colspan="3">Tổng tiền:</td>
-                <td class="total-price">{{$carttotal}}</td>
+                <td class="total-price">{{ number_format($carttotal) }} VNĐ</td>
             </tr>
         </table>
     </div>
@@ -50,9 +50,9 @@
         <br>
         <p text-align="justify">
             <b>Quý khách đã đặt hàng thành công!</b><br />
-            • Sản phẩm của Quý khách sẽ được chuyển đến Địa chỉ có trong phần Thông tin Khách hàng của chúng Tôi sau thời gian 2 đến 3 ngày, tính từ thời điểm này.<br />
-            • Nhân viên giao hàng sẽ liên hệ với Quý khách qua Số Điện thoại trước khi giao hàng 24 tiếng.<br />
+            • Quý khách vui lòng không tắt máy, nhân viên bán hàng sẽ liên hệ sớm nhất với quý khách<br />
+            • Nhân viên sẽ liên hệ với Quý khách qua Số Điện thoại mua hàng.<br />
             <b><br />Cám ơn Quý khách đã sử dụng Sản phẩm của Công ty chúng Tôi!</b>
         </p>
     </div>
-</div>					
+</div>

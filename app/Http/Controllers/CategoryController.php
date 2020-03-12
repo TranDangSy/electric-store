@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Category;
+use Illuminate\Support\Str;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+
 class CategoryController extends Controller
 {
     function __construct()
@@ -27,6 +29,7 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->name = $request->input('name');
+        $category->slug = Str::slug($request->name);
         $category->detail = $request->input('detail');
         $category->keyword = $request->input('keyword');
         $category->status = $request->input('status');
@@ -74,9 +77,8 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $category= Category::findOrFail($id);
-        unlink(public_path()."/"."admin_asset/img/category/" . $category->image);
-        $category -> delete();
+        Category::destroy($id);
+        
         return back();
     }
 }

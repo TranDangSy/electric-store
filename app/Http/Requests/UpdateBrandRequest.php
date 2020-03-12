@@ -14,14 +14,18 @@ class UpdateBrandRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'min:1',
+            'name' => 'min:3',
+            'content'=> 'min:10',
+            'address' => 'min:10',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.min' => 'Tên brand phải nhiều hơn 1 kí tự',
+            'name.min' => 'Tên thương hiệu phải có ít nhất 3 kí tự',
+            'content.min' => 'Thông tin thương hiệu phải có ít nhất 3 kí tự',
+            'address.min' => 'Địa chỉ thương hiệu quá ngắn',
         ];
     }
 }

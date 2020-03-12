@@ -27,19 +27,20 @@
                   <form action="{{route('admin/login')}}" method="POST">
                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Enter Email Address..." required>
+                      <input type="email" class="form-control form-control-user" id="email" name="email" 
+                        placeholder="Nhập email đăng nhập" required>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" required>
+                      <input type="password" class="form-control form-control-user" id="password" name="password" 
+                        placeholder="Nhập mật khẩu" required>
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" name="remember">Ghi nhớ</label>
+                        <input type="checkbox" name="remember"> Ghi nhớ mật khẩu
                       </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Đăng nhập</button>
                     </div>
                   </form>
                 </div>

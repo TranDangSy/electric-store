@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create brand</title>
-    <link href="admin_asset/css/bootstrap.min.css" rel="stylesheet">
-    <link href="admin_asset/css/font-awesome.min.css" rel="stylesheet">
+    <title>Create category</title>
+    <base href="{{asset('admin_asset')}}">
+    <link href="../admin_asset/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../admin_asset/css/bootstrap-4.css" rel="stylesheet" type="text/css">
     <style type="text/css">
     body{
         font-family: 'Roboto', Arial, sans-serif;
@@ -138,8 +139,8 @@
                             <input type="file" class="form-control" name="file">
                         </div>
                         <div class="form-group">
-                            <label for="address">Keyword:</label>
-                            <input type="text" class="form-control" placeholder="Nhập địa chỉ của brand" class="form-control" name="keyword">
+                            <label for="keyword">Keyword:</label>
+                            <input type="text" class="form-control" placeholder="Nhập keyword..." class="form-control" name="keyword">
                         </div>
                         <div class="form-group">
                             <label for="status">Category status:</label>

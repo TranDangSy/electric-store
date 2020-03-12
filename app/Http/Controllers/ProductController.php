@@ -70,7 +70,6 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->price = $request->price;
         $product->discount = $request->discount;
-        $product->popular = $request->popular;
         $product->hot = $request->hot;
         $product->status = $request->status;
         $product->category_id = $request->category_id;
@@ -83,6 +82,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::destroy($id);
+        
         return back();
     }
 
@@ -93,17 +93,5 @@ class ProductController extends Controller
         $file->move($path, $name);
 
         return $path . $name;
-    }
-
-    public  function getAddToCart(Request $request, $id)
-    {
-        $product = Product::find($id);
-    }
-
-    public function searchByName(Request $request)
-    {
-        $products = Product::where('name', 'like', '%' . $request->value . '%')->get();
-
-        return response()->json($products);
     }
 }
