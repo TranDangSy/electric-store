@@ -1,20 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Category;
-use App\Brand;
+
+use App\Post;
 use App\Product;
+use App\ProductFilters;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function index()
+    public function index(ProductFilters $filters)
     {
-        $products = Product::paginate(6);
+        $products =Product::filter($filters)->get();
         $productPay = Product::where('pay','>=',2)->get();
         return view('home.index', compact('products','productPay'));
+        
+        // $product = (new Product)->newQuery();
+
+        // if($request->exists('price')){
+        //     $product->orderBy('price', 'desc');
+        // }
+
+        // if($request->has('quantity')) {
+        //     $product->where('quantity', $request->quantity);
+        // }
+
+        // return $product->get();
+        // return Product::filter($filters)->get();
     }
 
     public function getProduct($id)
@@ -39,6 +53,20 @@ class FrontendController extends Controller
         $products = $products->orderBy('id','desc')->paginate(10);
         
         return view('home.detail_brand',compact('products'));
+    }
+
+    public function indexpost()
+    {
+        $posts = Post::all();
+
+        return view('post.index', compact('posts'));
+    }
+
+    public function getPost(Request $request, $id)
+    {
+        $post = Post::find($id);
+
+        return view('post.show', compact('post'));
     }
 
     public function searchByName(Request $request)

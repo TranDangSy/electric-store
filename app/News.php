@@ -16,9 +16,4 @@ class News extends Model
     {
         return $this->belongsTo(User::class)->withDefault();
     }
-
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
 }

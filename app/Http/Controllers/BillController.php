@@ -23,16 +23,6 @@ class BillController extends Controller
         return view('admin.bill.index', compact('bills'));
     }
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
     public function show($id)
     { 
         $bill_details = Bill_detail::where('bill_id',$id)->get();
@@ -43,7 +33,9 @@ class BillController extends Controller
 
     public function destroy($id)
     {
-        //
+        Bill::destroy($id);
+        
+        return back();
     }
 
     public function updatebill(Request $res, $id)

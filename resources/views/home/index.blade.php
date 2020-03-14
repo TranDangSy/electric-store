@@ -5,8 +5,10 @@
 	{{session('notif')}}
 </div>
 @endif
+
 <div class="container">
 	<div class="row">
+		<a href="{{ asset('?price_desc') }}">Lọc</a>
 		<div class="col-sm-9 padding-right">
 			<div class="features_items">
 				<h2 class="title text-center">Sản phẩm</h2>
@@ -33,7 +35,6 @@
 				</div>
 				@endforeach
 			</div>
-			{{ $products->links() }}
 			<div class="recommended_items">
 				<h2 class="title text-center">Sản phẩm đề xuất</h2>
 				<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -44,7 +45,7 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="../admin_asset/images/home/recommend1.jpg" alt="" />
+											<img src="{{asset($item->image)}}" alt="" />
 										<h2>{{$item->price}}</h2>
 											<p>{{$item->name}}</p>
 											<a href="" class="btn btn-default add-to-cart"><i 

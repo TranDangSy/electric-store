@@ -36,7 +36,17 @@
                         <ul class="nav navbar-nav">
                             <li><a href="{{ asset('/wishlist') }}"><i class="fa fa-star"></i>Wishlist</a></li>
                             <li><a href="{{ asset('/checkout') }}"><i class="fa fa-crosshairs"></i>Checkout</a></li>
-                            <li><a href="{{ asset('/cart') }}" class="active"><i class="fa fa-shopping-cart"></i>Cart ({{ Cart::count() }})</a></li>
+                            <li><a href="{{ asset('/cart') }}"><i class="fa fa-shopping-cart"></i>Cart ({{ Cart::count() }})</a></li>
+                            @if(Auth::user())
+                            <li><a href="#"><i class="fa fa-user"></i>{{ Auth::user()->name }}</a></li>
+                            <li><a href="" onclick="event.preventDefault();
+                                document.getElementById('logout').submit();" title="">Đăng xuất</a></li>
+                                <form id="logout" action="logout" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @else
+                            <li><a href="login"><i class="fa fa-lock"></i>Login</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -67,10 +77,9 @@
                                     <li><a href="{{ asset('/cart') }}">Cart</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="#">Bài viết<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="blog.html">Blog List</a></li>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
+                                    <li><a href="post">Danh sách bài viết</a></li>
                                 </ul>
                             </li>
                             <li><a href="contact-us.html">Contact</a></li>

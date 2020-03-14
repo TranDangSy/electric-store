@@ -142,10 +142,6 @@
                             <label for="keyword">Keyword:</label>
                             <input type="text" class="form-control" placeholder="Nhập keyword..." class="form-control" name="keyword">
                         </div>
-                        <div class="form-group">
-                            <label for="status">Category status:</label>
-                            <input type="text" placeholder="Nhập status" class="form-control" name="status">
-                        </div>
                         <div class="form-group login-submit">
                             <button data-dismiss="modal" type="submit" class="btn btn-primary btn-xl">Create Category</button>
                         </div>

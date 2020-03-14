@@ -165,39 +165,31 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="name">Name:</label>
+                            <label for="name">Tên:</label>
                             <input type="text" placeholder="Nhập tên của sản phẩm" class="form-control" name="name"
                                 required autofocus>
                         </div>
                         <div class="form-group">
-                            <label for="decription">Decription:</label>
+                            <label for="decription">Mô tả:</label>
                             <textarea rows="4" cols="50" name="decription" class="form-control" 
                                 placeholder="Nhập thông tin của sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="image">Image</label>
+                            <label for="image">Ảnh</label>
                             <input type="file" class="form-control" name="file">
                         </div>
                         <div class="form-group">
-                            <label for="quantity">Quantity:</label>
+                            <label for="quantity">Số lượng:</label>
                             <input type="text" class="form-control" placeholder="Nhập số lượng của sản phẩm"
                                 class="form-control" name="quantity">
                         </div>
                         <div class="form-group">
-                            <label for="price">Price:</label>
+                            <label for="price">Giá:</label>
                             <input type="text" placeholder="Nhập giá của sản phẩm" class="form-control" name="price">
                         </div>
                         <div class="form-group">
                             <label for="discount">Discount:</label>
                             <input type="text" placeholder="Nhập discount" class="form-control" name="discount">
-                        </div>
-                        <div class="form-group">
-                            <label for="hot">Hot:</label>
-                            <input type="text" placeholder="Nhập hot" class="form-control" name="hot">
-                        </div>
-                        <div class="form-group">
-                            <label for="status">Status:</label>
-                            <input type="text" placeholder="Nhập status" class="form-control" name="status">
                         </div>
                         <div class="form-group login-submit">
                             <button data-dismiss="modal" type="submit" class="btn btn-primary btn-xl">Tạo sản phẩm</button>

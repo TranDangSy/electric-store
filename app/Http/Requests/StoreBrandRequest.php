@@ -18,7 +18,6 @@ class StoreBrandRequest extends FormRequest
             'content'=> 'required|min:10',
             'file' => 'required|image',
             'address' => 'required|min:5',
-            'status' => 'required|integer',
         ];
     }
 
@@ -32,7 +31,6 @@ class StoreBrandRequest extends FormRequest
             'content.min' => 'Thông tin thương hiệu phải có ít nhất 10 kí tự',
             'address.min' => 'Địa chỉ thương hiệu quá ngắn',
             'file.required' => 'Chưa chọn ảnh thương hiệu',
-            'status.required' => 'Chưa nhập trạng thái của thương hiệu',
         ];
     }
 }

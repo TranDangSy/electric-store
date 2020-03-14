@@ -17,11 +17,9 @@ class StoreProductRequest extends FormRequest
             'name' => 'required|min:3',
             'file' => 'required|image',
             'quantity' => 'required',
-            'hot' => 'required',
             'price' => 'required',
             'category_id' => 'required',
             'brand_id' => 'required',
-            'status' => 'required|integer',
         ];
     }
 
@@ -31,7 +29,6 @@ class StoreProductRequest extends FormRequest
             'name.required' => 'Bạn chưa nhập tên sản phẩm',
             'name.min' => 'Tên sản phẩm phải có ít nhất 3 kí tự',
             'file.required' => 'Chưa chọn ảnh sản phẩm',
-            'status.required' => 'Chưa nhập trạng thái của sản phẩm',
             'quantity.required' => 'Chưa nhập số lượng của sản phẩm',
         ];
     }
