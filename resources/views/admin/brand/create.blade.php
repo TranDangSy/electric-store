@@ -142,10 +142,6 @@
                             <label for="address">Address:</label>
                             <input type="text" class="form-control" placeholder="Nhập địa chỉ của brand" class="form-control" name="address">
                         </div>
-                        <div class="form-group">
-                            <label for="status">Brand status:</label>
-                            <input type="text" placeholder="Nhập status" class="form-control" name="status">
-                        </div>
                         <div class="form-group login-submit">
                             <button data-dismiss="modal" type="submit" class="btn btn-primary btn-xl">Create Brand</button>
                         </div>

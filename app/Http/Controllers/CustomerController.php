@@ -20,16 +20,6 @@ class CustomerController extends Controller
         return view('admin.customer.index', compact('customers'));
     }
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
     public function show($id)
     {
         //

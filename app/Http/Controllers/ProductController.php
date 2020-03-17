@@ -39,7 +39,8 @@ class ProductController extends Controller
         $image = $this->upload($request->file('file'), 'admin_asset/img/product/');
         $request->merge(['image' => $image]);
         $request['slug'] = Str::slug($request->name);
-        $product = Product::create($request->all());
+
+        Product::create($request->all());
 
         return redirect('admin/products/create')->with('thongbao','Tạo sản phẩm thành công');
     }
@@ -88,7 +89,7 @@ class ProductController extends Controller
 
     public function upload($file, $path)
     {
-        $name = sha1(date('YmdHis') . Str::random(30) . Str::random(2)) . '.' . $file->getClientOriginalExtension();
+        $name = sha1(date('YmdHis') . Str::random(5) . Str::random(2)) . '.' . $file->getClientOriginalExtension();
 
         $file->move($path, $name);
 

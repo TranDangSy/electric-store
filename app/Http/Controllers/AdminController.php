@@ -49,7 +49,6 @@ class AdminController extends Controller
 
     public function logout()
     {
-        Request::session()->flush();
         Auth::logout();
 
         return redirect('admin/login');

@@ -27,7 +27,6 @@ class StoreCategoryRequest extends FormRequest
             'name' => 'required|min:5',
             'file' => 'required|image',
             'keyword' => 'required|min:3',
-            'status' => 'required|integer',
         ];
     }
     public function messages()
@@ -38,7 +37,6 @@ class StoreCategoryRequest extends FormRequest
             'keyword.required' => 'Bạn chưa nhập keyword',
             'keyword.min' => 'Tên keyword phải có ít nhất 3 kí tự',
             'file.required' => 'Chưa chọn ảnh category',
-            'status.required' => 'Chưa nhập trạng thái của category',
         ];
     }
 }

@@ -11,6 +11,7 @@ use Cart;
 use Brian2694\Toastr\Facades\Toastr;
 use Mail;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {

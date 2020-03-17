@@ -72,7 +72,7 @@ class BrandController extends Controller
 
     public function upload($file, $path)
     {
-        $name = sha1(date('YmdHis') . Str::random(30) . Str::random(2)) . '.' . $file->getClientOriginalExtension();
+        $name = sha1(date('YmdHis') . Str::random(5) . Str::random(2)) . '.' . $file->getClientOriginalExtension();
 
         $file->move($path, $name);
 

@@ -42,7 +42,7 @@
 
             <tr>
                 <td colspan="3">Tổng tiền:</td>
-                <td class="total-price">{{ number_format($carttotal) }} VNĐ</td>
+                <td class="total-price">{{ $carttotal }} VNĐ</td>
             </tr>
         </table>
     </div>

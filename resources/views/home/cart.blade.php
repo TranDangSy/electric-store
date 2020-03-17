@@ -52,8 +52,8 @@
                     @endforeach
                 </tbody>
             </table>
+            <a class="btn btn-default check_out" href="{{ asset('/checkout') }}">Đặt hàng</a>
         </div>
-        <a class="btn btn-default check_out" href="{{ asset('/checkout') }}">Check Out</a>
     </div>
 </section>
 @include('widget.endoffile')

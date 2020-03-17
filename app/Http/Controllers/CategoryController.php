@@ -32,7 +32,6 @@ class CategoryController extends Controller
         $category->slug = Str::slug($request->name);
         $category->detail = $request->input('detail');
         $category->keyword = $request->input('keyword');
-        $category->status = $request->input('status');
         if($request->hasfile('file')){
             $file = $request->file('file');
             $name = time().$file->getClientOriginalName();

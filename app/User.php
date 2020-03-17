@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Hash;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -33,7 +34,7 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = Hash::make($value);
+        $this->attributes['password'] = Hash::needsRehash($value) ? Hash::make($value) : $value;
     }
 
     public function rates()
@@ -44,10 +45,5 @@ class User extends Authenticatable
     public function news()
     {
     	return $this->hasMany(News::class);
-    }
-
-    public function comments()
-    {
-        return $this->morphMany('App\Comment', 'commentable');
     }
 }
