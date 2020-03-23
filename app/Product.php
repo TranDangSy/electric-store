@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Overtrue\LaravelLike\Traits\Likeable;
+use willvincent\Rateable\Rateable;
 
 class Product extends Model
 {
+    use Likeable, Rateable;
+
     protected $fillable = [
         'name',
         'slug',

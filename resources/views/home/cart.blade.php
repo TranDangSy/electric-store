@@ -4,24 +4,24 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Shopping Cart</li>
+                <li><a href="{{ asset('/') }}">Trang chủ</a></li>
+                <li class="active">Giỏ hàng</li>
             </ol>
         </div>
         @if(session('error'))
             <div class="alert alert-danger">
                 {{session('error')}}
             </div>
-            @endif
+        @endif
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
                         <td class="image">Ảnh sản phẩm</td>
-                        <td class="description">Name</td>
-                        <td class="price">Price</td>
-                        <td class="quantity">Quantity</td>
-                        <td class="total">Total</td>
+                        <td class="description">Tên</td>
+                        <td class="price">Giá</td>
+                        <td class="quantity">Số lượng</td>
+                        <td class="total" style="text-align: center;">Tổng</td>
                         <td class="action">Thao tác</td>
                     </tr>
                 </thead>
@@ -44,8 +44,8 @@
                         <td class="cart_price">
                             <p class="price">{{number_format($cart->price*$cart->qty,0,',','.')}} VNĐ</p>
                         </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" style="text-" href="{{asset('cart/delete/'.$cart->rowId)}}">
+                        <td class="cart_delete" style="width: 70px; text-align: center;">
+                            <a href="{{asset('cart/delete/'.$cart->rowId)}}" class="cart_quantity_delete">
                                 <i class="fa fa-times"></i></a>
                         </td>
                     </tr>
@@ -55,6 +55,18 @@
             <a class="btn btn-default check_out" href="{{ asset('/checkout') }}">Đặt hàng</a>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function updateCart(qty, rowId){
+                $.get(
+                    '{{ asset('cart/update') }}',
+                    {qty:qty, rowId:rowId},
+                    function(){
+                            location.reload();
+                    }
+                );
+            }
+    </script>
 </section>
 @include('widget.endoffile')
 @include('widget.footer')

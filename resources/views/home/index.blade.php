@@ -8,10 +8,24 @@
 
 <div class="container">
 	<div class="row">
-		<a href="{{ asset('?price_desc') }}">Lọc</a>
 		<div class="col-sm-9 padding-right">
 			<div class="features_items">
 				<h2 class="title text-center">Sản phẩm</h2>
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sắp xếp theo
+						<span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="{{ asset('?price_desc') }}" class="title">Giá giảm dần</a>
+						</li>
+						<li>
+							<a href="{{ asset('?new_pro') }}" class="title">Mới nhất</a>
+						</li>
+						<li>
+							<a href="{{ asset('?buy_max') }}" class="title">Mua nhiều nhất</a>
+						</li>
+					</ul>
+				</div>
 				@foreach($products as $product)
 				<div class="col-sm-4">
 					<div class="product-image-wrapper">
@@ -27,13 +41,14 @@
 						</div>
 						<div class="choose">
 							<ul class="nav nav-pills nav-justified">
-								<li><a href="{{asset('wishlist/add/'.$product->id)}}"><i 
-									class="fa fa-plus-square"></i>Thêm vào danh sách mong muốn</a></li>
+								<li><a href="{{asset('wishlist/add/'.$product->id)}}"><i
+											class="fa fa-plus-square"></i>Thêm vào danh sách mong muốn</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				@endforeach
+				{{ $products->appends(Request::all())->links() }}
 			</div>
 			<div class="recommended_items">
 				<h2 class="title text-center">Sản phẩm đề xuất</h2>
@@ -45,11 +60,12 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="{{asset($item->image)}}" alt="" />
-										<h2>{{$item->price}}</h2>
+											<a href="product/{{$product->id}}/{{$product->slug}}.html">
+												<img src="{{asset($item->image)}}" alt="" /></a>
+											<h2>{{$item->price}}</h2>
 											<p>{{$item->name}}</p>
-											<a href="" class="btn btn-default add-to-cart"><i 
-												class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 
 									</div>

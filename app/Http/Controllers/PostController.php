@@ -58,4 +58,28 @@ class PostController extends Controller
         
         return view('admin.posts.show', compact('post'));
     }
+
+    public function edit($id)
+    {
+        $post = Post::find($id);
+
+        return view('admin.posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        return redirect('admin/posts/');
+    }
+
+    public function destroy($id)
+    {
+        Post::destroy($id);
+
+        return back();
+    }
 }

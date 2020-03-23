@@ -6,10 +6,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Hash;
+use Overtrue\LaravelLike\Traits\Liker;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use Notifiable, Liker;
 
     protected $fillable = [
         'name',
@@ -21,6 +22,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'address',
         'level',
         'status',
+        'last_login_at',
+        'last_login_ip',
     ];
 
     protected $hidden = [
@@ -45,5 +48,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function news()
     {
     	return $this->hasMany(News::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

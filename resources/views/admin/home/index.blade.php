@@ -26,8 +26,8 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Loại sản phẩm</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalCategory }}</div>
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Sản phẩm bán chạy</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $productPay }}</div>
             </div>
             <div class="col-auto">
               <i class="fa fa-dollar-sign fa-2x text-gray-300"></i>
@@ -79,80 +79,72 @@
       </div>
     </div>
   </div>
-  <div id="container" data-order="{{ $orderMonth }}"></div>
-@section('scripts')
-<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    var order = $('#container').data('order');
-    var listOfValue = [];
-    var listOfYear = [];
-    order.forEach(function(element){
-        listOfYear.push(element.getMonth);
-        listOfValue.push(element.value);
-    });
-    console.log(listOfValue);
+  <div id="container"></div>
+  @section('scripts')
+  <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+  <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        var data_order = <?php echo $data; ?>;
+    
     var chart = Highcharts.chart('container', {
-
-        title: {
-            text: 'Orders by months'
-        },
-
-        subtitle: {
-            text: 'Plain'
-        },
-
-        xAxis: {
-            categories: listOfYear,
-        },
-
-        series: [{
-            type: 'column',
-            colorByPoint: true,
-            data: listOfValue,
-            showInLegend: false
-        }]
+    
+    title: {
+       text: 'Doanh thu theo tháng'
+    },
+    xAxis: {
+       
+       categories: ['Tháng 1','Tháng 2','Tháng 3' ,'Tháng 4','Tháng 5','Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12']
+    },
+    
+    
+    series: [{
+       type: 'column',
+       name: 'Tổng doanh thu',
+       colorByPoint: true,
+       data: data_order,
+       showInLegend: false
+    }]
     });
     
     $('#plain').click(function () {
-        chart.update({
-            chart: {
-                inverted: false,
-                polar: false
-            },
-            subtitle: {
-                text: 'Plain'
-            }
-        });
+    chart.update({
+        chart: {
+            inverted: false,
+            polar: false
+        },
+        subtitle: {
+            text: 'Plain'
+        }
     });
-
+    });
+    
     $('#inverted').click(function () {
-        chart.update({
-            chart: {
-                inverted: true,
-                polar: false
-            },
-            subtitle: {
-                text: 'Inverted'
-            }
-        });
+    chart.update({
+        chart: {
+            inverted: true,
+            polar: false
+        },
+        subtitle: {
+            text: 'Inverted'
+        }
     });
-
+    });
+    
     $('#polar').click(function () {
-        chart.update({
-            chart: {
-                inverted: false,
-                polar: true
-            },
-            subtitle: {
-                text: 'Polar'
-            }
-        });
+    chart.update({
+        chart: {
+            inverted: false,
+            polar: true
+        },
+        subtitle: {
+            text: 'Polar'
+        }
     });
-});
-</script>
-@endsection
+    });
+    });
+ </script>
+  @endsection
 </div>
 @stop

@@ -12,14 +12,14 @@
         <thead>
             <tr>
                 <th style="width: 5%; text-align: center;">Name</th>
-                <th style="width: 15%; text-align: center;">Content</th>
+                <th style="width: 15%; text-align: center;">Nội dung</th>
                 <th style="width: 25%; text-align: center;">Hành động</th>
             </tr>
         </thead>
         <tbody>
         @foreach($brands as $brand)
             <tr>
-                <td style="width: 5%;" class="text-center"><span class="badge badge-success">
+                <td style="width: 5%;" class="text-center"><span>
                 {{$brand->name}}</span></td>
                 <td style="width: 15%;" class="text-center"><span class="badge" 
                 style ="white-space: nowrap; width: 200px; border: 1px solid #000000;
@@ -30,7 +30,14 @@
                 @if(Auth::user()->level==1 || Auth::user()->level==2)
                   <a class="btn btn-sm btn-primary" href="{{ route('brands.edit', $brand->id) }}" title="">Sửa</a>
                 @endif
-                @if(Auth::user()->level==1)
+                @if(($brand->status) == 1)
+                <a onclick="return confirm('Bạn có muốn thay đổi trạng thái nhà cung cấp này')"
+                  href="admin/brands/off/{{$brand->id}}" class="btn btn-sm btn-danger">Tắt</a>
+                @else
+                <a onclick="return confirm('Bạn có muốn thay đổi trạng thái nhà cung cấp này')"
+                  href="admin/brands/on/{{$brand->id}}" class="btn btn-sm btn-success">Bật</a>
+                @endif
+                @if(Auth::user()->level==2)
                 <form action="{{ route('brands.destroy', $brand->id) }}" class="form-delete" role="form" method="post" style="display: inline">
                     @csrf
                     @method('delete')

@@ -65,5 +65,28 @@ class BillController extends Controller
             $bill->save();
         }
         return back();
+
+        $order = order::find($id);
+        $order_product = order_product::where('order_id',$id)->get();
+        
+        foreach($order_product as $item)
+        {
+            $product = product::where('code', '=' , $item->code)->first();
+            $order->status = $res->status;
+            
+            switch($res->status){
+                case 0:
+                    $res->status = 0;
+                break;
+
+                case 1:
+                    $res->status = 1;
+                    $product->quantity = $product->quantity - $item->quantity;
+                    $product->save();
+                break;
+            }
+            $bill->save();
+        }
+        return back();
     }
 }

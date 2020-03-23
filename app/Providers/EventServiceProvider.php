@@ -13,9 +13,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Illuminate\Auth\Events\Verified' => [
-            'App\Listeners\LogVerifiedUser',
-        ],
+        'App\Events\ViewPostHandler' => [],
     ];
 
     /**
@@ -27,6 +25,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        Event::listen('post.show', 'App\Events\ViewPostHandler');
     }
 }

@@ -6,27 +6,26 @@
             @csrf
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Check out</li>
+                    <li><a href="{{ asset('/') }}">Trang chủ</a></li>
+                    <li class="active">Thủ tục thanh toán</li>
                 </ol>
             </div>
             @if(session('notif'))
             <div class="alert alert-success">
                 {{session('notif')}}
             </div>
+            @elseif(count($errors) >0)
+            <ul>
+                @foreach($errors->all() as $error)
+                <li class="text-danger">{{ $error }}</li>
+                @endforeach
+            </ul>
             @endif
             <div class="shopper-informations">
                 <div class="row">
                     <div class="col-sm-7">
                         <div class="shopper-info">
                             <p>Thông tin khách hàng</p>
-                            @if(count($errors) >0)
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                <li class="text-danger">{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                            @endif
 
                             <div class="form-group">
                                 <input type="text" name="fullName" class="form-control" value="{{ old('fullName') }}" placeholder="Họ và Tên *">
@@ -45,7 +44,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="order-message">
-                            <p>Shipping Order</p>
+                            <p>Lưu ý vận chuyển</p>
                             <textarea name="note" value="{{ old('message') }}" placeholder="Ghi chú"
                                 rows="10"></textarea>
                         </div>
@@ -53,7 +52,7 @@
                 </div>
             </div>
             <div class="review-payment">
-                <h2>Review & Payment</h2>
+                <h2>Xem lại & Đặt hàng</h2>
             </div>
 
             <div class="table-responsive cart_info">
@@ -121,7 +120,7 @@
                         </tr>
                         @else
                         <tr>
-                            <td>You have no items in the shopping cart</td>
+                            <td>Bạn không có sản phẩm nào trong giỏ hàng</td>
                         </tr>
                         <tr>
                             <td colspan="4">&nbsp;
