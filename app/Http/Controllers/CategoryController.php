@@ -74,6 +74,33 @@ class CategoryController extends Controller
         return redirect('admin/category/');
     }
 
+    public function on($id)
+    {
+        $category = Category::find($id);  
+        if ($category)
+        {
+            $category->status = 1;
+            $category->save();
+            return redirect('admin/category');
+        }
+        else {
+            return redirect('admin/category');
+        } 
+    }
+
+    public function off($id)
+    {
+        $category = Category::find($id);
+        if ($category) 
+        {
+            $category->status = 0;
+            $category->save();
+            return redirect('admin/category');
+        }
+        else 
+            return redirect('admin/category');
+    }
+
     public function destroy($id)
     {
         Category::destroy($id);

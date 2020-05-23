@@ -31,7 +31,7 @@
                 <td width="20%">Số lượng</td>
                 <td width="15%">Thành tiền</td>
             </tr>
-            @<?php foreach ($cartinfor as $cart): ?>
+            <?php foreach ($cartinfor as $cart): ?>
             <tr>
                 <td>{{$cart->name}}</td>
                 <td class="price">{{ number_format($cart->price) }} VNĐ</td>

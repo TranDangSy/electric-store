@@ -4,17 +4,7 @@
 <script type="text/javascript" src="../admin_asset/js/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script type="text/javascript" src="../admin_asset/js/typeahead.bundle.min.js"></script>
-<script type="text/javascript">
-	function updateCart(qty, rowId){
-            $.get(
-                '{{ asset('cart/update') }}',
-                {qty:qty, rowId:rowId},
-                function(){
-                        location.reload();
-                }
-            );
-        }
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
 <script>
 $(document).ready(function($) {
     var engine1 = new Bloodhound({
@@ -48,6 +38,28 @@ $(document).ready(function($) {
         }
     ]);
 });
+</script>
+<script>
+	$(document).ready(function(){
+	   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+	   $(".likePost").click(function(){
+		  $.ajax({
+			 url: '{{route('ajaxLike')}}',
+			 type: 'POST',
+			 data: {
+				_token: CSRF_TOKEN,
+				id: $(this).data("like"),
+			 },
+			 dataType: 'JSON',
+			 success: function() {
+				location.reload();
+			 }
+		  });
+	   });
+	});
+</script>
+<script>
+    $("#input-id").rating();
 </script>
     {!! Toastr::message() !!}
 </body>

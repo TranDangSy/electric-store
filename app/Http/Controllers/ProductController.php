@@ -20,7 +20,7 @@ class ProductController extends Controller
     
     public function index()
     {
-        $products = Product::all();
+        $products = Product::all();     
 
         return view('admin.product.index',compact('products'));
     }
@@ -78,6 +78,33 @@ class ProductController extends Controller
         $product->save();
 
         return redirect('admin/products');
+    }
+
+    public function on($id)
+    {
+        $product = Product::find($id);  
+        if ($product)
+        {
+            $product->status = 1;
+            $product->save();
+            return redirect('admin/products');
+        }
+        else {
+            return redirect('admin/products');
+        } 
+    }
+
+    public function off($id)
+    {
+        $product = Product::find($id);
+        if ($product) 
+        {
+            $product->status = 0;
+            $product->save();
+            return redirect('admin/products');
+        }
+        else 
+            return redirect('admin/products');
     }
 
     public function destroy($id)

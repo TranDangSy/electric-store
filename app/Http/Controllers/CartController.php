@@ -7,6 +7,7 @@ use App\Product;
 use App\Customer;
 use App\Bill;
 use App\Bill_detail;
+use App\Http\Requests\StoreCartRequest;
 use Cart;
 use Brian2694\Toastr\Facades\Toastr;
 use Mail;
@@ -44,7 +45,7 @@ class CartController extends Controller
             return redirect()->back()->with('danger','Sản phẩm đã có trong danh sách của bạn');
         }
         Cart::instance('wishlist')->add(['id' => $id, 'qty' => 1, 'name' => $product->name,
-            'price' => $product->price, 'options' => ['image' => $product->image ]]);
+            'price' => $product->price, 'options' => ['image' => $product->image, 'slug' => $product->slug ]]);
         Toastr::success('Đã thêm sản phẩm vào danh sách wishlist', 'Success', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
@@ -94,7 +95,7 @@ class CartController extends Controller
         return view('home.checkout', $this->data);
     }
 
-    public function postCheckOut(Request $request) {
+    public function postCheckOut(StoreCartRequest $request) {
         $cartInfor = Cart::content();
         DB::beginTransaction();
         try {

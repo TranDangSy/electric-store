@@ -12,5 +12,5 @@
     <link href="../admin_asset/css/bootstrap-4.css" rel="stylesheet" type="text/css">
     <link href="../admin_asset/css/dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="../admin_asset/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
-    <link href="../admin_asset/css/print.min.css" rel="stylesheet" type="text/css">
+    <link href="../admin_asset/css/responsive.css" rel="stylesheet" type="text/css">
 </head>

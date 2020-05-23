@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Carbon\Carbon;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AdminController extends Controller
 {
+    use AuthenticatesUsers;
 
     function __construct()
     {
@@ -39,6 +42,11 @@ class AdminController extends Controller
 
         if (Auth::attempt(['email'=>$request->email,'password'=>$request->password], $request->has('remember')))
         {
+            $user = User::where('id', Auth::user()->id);
+            $user->update([
+                'last_login_at' => Carbon::now()->toDateTimeString(),
+                'last_login_ip' => $request->getClientIp()
+            ]);
             return redirect('admin');
         }
         else
@@ -74,7 +82,7 @@ class AdminController extends Controller
     {
         $avatar = $this->upload($request->file('file'), 'admin_asset/img/user/');
         $request->merge(['avatar' => $avatar]);
-        $users = User::create($request->all());
+        User::create($request->all());
 
         return redirect('register')->with('thongbao','Tạo tài khoản thành công hãy đăng nhập');
     }
@@ -83,7 +91,7 @@ class AdminController extends Controller
     {
         $avatar = $this->upload($request->file('file'), 'admin_asset/img/user/');
         $request->merge(['avatar' => $avatar]);
-        $users = User::create($request->all());
+        User::create($request->all());
 
         return redirect('admin/users')->with('thongbao','Tạo tài khoản thành công');
     }

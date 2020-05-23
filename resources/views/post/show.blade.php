@@ -15,15 +15,15 @@
                     @include('post.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
 
                     <hr />
-                    <h5>Add comment</h5>
+                    <h5>Thêm bình luận</h5>
                     <form method="post" action="{{ route('comments.store') }}">
                         @csrf
                         <div class="form-group">
-                            <textarea class="form-control" name=body></textarea>
+                            <textarea class="form-control" name=body placeholder="Viết bình luận"></textarea>
                             <input type=hidden name=post_id value="{{ $post->id }}" />
                         </div>
                         <div class="form-group">
-                            <input type=submit class="btn btn-success" value="Add Comment" />
+                            <input type=submit class="btn btn-success" value="Bình luận" />
                         </div>
                     </form>
                 </div>

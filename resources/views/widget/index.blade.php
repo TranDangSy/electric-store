@@ -69,9 +69,6 @@
 					</ul>
 				</div>
 			</div>
-			<div class="shipping text-center">
-				<img src="../admin_asset/images/home/shipping.jpg" alt="" />
-			</div>
 		</div>
 	</div>
 	@yield('content')

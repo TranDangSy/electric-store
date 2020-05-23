@@ -11,7 +11,11 @@ Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('ver
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-Route::get('product/{id}/{slug}.html', 'FrontendController@getProduct');
+Route::get('product/{id}/{slug}.html', 'FrontendController@getProduct')->name('productDetail');
+
+Route::post('ajaxLike', 'FrontendController@ajaxLike')->name('ajaxLike');
+
+Route::post('products', 'FrontendController@postProduct')->name('products.post');
 
 Route::get('category/{id}/{slug}.html','FrontendController@getCategory');
 
@@ -43,7 +47,7 @@ Route::group(['prefix'=>'wishlist'], function(){
 Route::get('/checkout', 'CartController@getCheckOut');
 Route::post('/checkout', 'CartController@postCheckOut');
 
-Route::get('admin/login', 'AdminController@getLogin');
+Route::get('admin/login', 'AdminController@getLogin')->middleware('checkLogin');
 Route::post('admin/login', 'AdminController@postLogin')->name('admin/login');
 
 Route::post('admin/logout', 'AdminController@logout');
@@ -56,15 +60,35 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
 
     Route::resources(['brands' => 'BrandController']);
 
+    Route::group(['prefix' => 'brands'], function() 
+    {
+        Route::get('on/{id}','BrandController@on');
+	    Route::get('off/{id}','BrandController@off');
+    });
+
     Route::resources(['category' => 'CategoryController']);
 
+    Route::group(['prefix' => 'category'], function() 
+    {
+        Route::get('on/{id}','CategoryController@on');
+	    Route::get('off/{id}','CategoryController@off');
+    });
+
     Route::resources(['products' => 'ProductController']);
+
+    Route::group(['prefix' => 'products'], function() 
+    {
+        Route::get('on/{id}','ProductController@on');
+	    Route::get('off/{id}','ProductController@off');
+    });
 
     Route::resources(['customers' => 'CustomerController']);
 
     Route::resources(['bills' => 'BillController']);
 
     Route::resources(['posts' => 'PostController']);
+
+    Route::resources(['comments' => 'CommentController']);
 
     Route::resources(['attribute' => 'AttributeController']);
 

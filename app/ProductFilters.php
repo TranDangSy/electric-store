@@ -14,13 +14,18 @@ class ProductFilters extends QueryFilter
         return $this->builder->orderBy('price', $order);
     }
 
-    // public function quantity($qty)
-    // {
-    //     return $this->builder->where('quantity', $qty);
-    // }
-
-    public function length($order = 'desc')
+    public function new_pro($order = 'desc')
     {
-        return $this->builder->orderBy('length', $order);
+        return $this->builder->orderBy('id', $order);
+    }
+
+    public function buy_max($order = 'desc')
+    {
+        return $this->builder->orderBy('pay', $order);
+    }
+
+    public function status()
+    {
+        return $this->builder->where('status', 1);
     }
 }

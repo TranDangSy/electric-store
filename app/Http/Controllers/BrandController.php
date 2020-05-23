@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
@@ -18,7 +17,7 @@ class BrandController extends Controller
     
     public function index()
     {
-        $brands = Brand::where('status', '=', '1')->get();
+        $brands = Brand::all();
 
         return view('admin.brand.index', compact('brands'));
     }
@@ -61,6 +60,33 @@ class BrandController extends Controller
         $brand->save();
 
         return redirect('admin/brands');
+    }
+
+    public function on($id)
+    {
+        $brand = Brand::find($id);  
+        if ($brand)
+        {
+            $brand->status = 1;
+            $brand->save();
+            return redirect('admin/brands');
+        }
+        else {
+            return redirect('admin/brands');
+        } 
+    }
+
+    public function off($id)
+    {
+        $brand = Brand::find($id);
+        if ($brand) 
+        {
+            $brand->status = 0;
+            $brand->save();
+            return redirect('admin/brands');
+        }
+        else 
+            return redirect('admin/brands');
     }
 
     public function destroy($id)

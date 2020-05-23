@@ -14,7 +14,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'min:1', 
+            'name' => 'min:1',
         ];
     }
 

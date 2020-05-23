@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Tạo bài viết</div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('posts.store') }}">
+                    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" role="form">
                         <div class="form-group">
                             @csrf
                             <label class="label">Tiêu đề bài viết: </label>
